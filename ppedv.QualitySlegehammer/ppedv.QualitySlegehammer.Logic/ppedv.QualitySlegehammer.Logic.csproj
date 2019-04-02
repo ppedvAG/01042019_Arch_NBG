@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.QualitySlegehammer.Data.EF\ppedv.QualitySlegehammer.Data.EF.csproj" />
+    <ProjectReference Include="..\ppedv.QualitySlegehammer.Model\ppedv.QualitySlegehammer.Model.csproj" />
+  </ItemGroup>
+
+</Project>

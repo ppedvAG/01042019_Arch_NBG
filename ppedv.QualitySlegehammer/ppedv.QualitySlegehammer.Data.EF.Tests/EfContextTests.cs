@@ -103,7 +103,7 @@ namespace ppedv.QualitySlegehammer.Data.EF.Tests
             {
                 //READ(UPDATE)
                 var loaded = con.Devices.Find(dev.Id);
-                loaded.Should().BeEquivalentTo(dev, c => c.Excluding(x => x.Id));
+                loaded.Should().BeEquivalentTo(newDev, c => c.Excluding(x => x.Id));
 
 
                 //DELETE
