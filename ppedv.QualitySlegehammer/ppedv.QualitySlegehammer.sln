@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Logic", "ppedv.QualitySlegehammer.Logic\ppedv.QualitySlegehammer.Logic.csproj", "{DC0076DB-D206-4FBE-9175-D32D8D1D9FF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Logic.Tests", "ppedv.QualitySlegehammer.Logic.Tests\ppedv.QualitySlegehammer.Logic.Tests.csproj", "{87823154-0835-4A23-8D3C-6DF2FB0F249E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DC0076DB-D206-4FBE-9175-D32D8D1D9FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC0076DB-D206-4FBE-9175-D32D8D1D9FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC0076DB-D206-4FBE-9175-D32D8D1D9FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

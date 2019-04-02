@@ -11,14 +11,20 @@ namespace ppedv.QualitySlegehammer.Logic
 
         public OrderStatus GetStatus(Order order)
         {
+            if (order == null)
+                throw new ArgumentNullException();
+
+            if (order.Jobs.Count == 0)
+                throw new InvalidOperationException();
+
             var jobs = Repository.Query<Job>().Where(x => x.Order.Id == order.Id).ToList();
 
             if (jobs.All(x => x.Status == JobStatus.New))
                 return OrderStatus.New;
-            else if (jobs.Any(x => x.Status == JobStatus.Running))
-                return OrderStatus.Running;
-            else
+            else if (jobs.All(x => x.Status == JobStatus.Error || x.Status == JobStatus.OK))
                 return OrderStatus.Finished;
+            else
+                return OrderStatus.Running;
         }
 
         public Core(IRepository repo) //todo: dependency injection in here
