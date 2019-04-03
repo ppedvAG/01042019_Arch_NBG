@@ -15,6 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.UI.Web", "ppedv.QualitySlegehammer.UI.Web\ppedv.QualitySlegehammer.UI.Web.csproj", "{98246BA7-C54C-4BB9-A85C-754955EBE35C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExterneTreiber", "ExterneTreiber", "{E707D61C-6F18-43DF-B821-564A9A0A332C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinFord.MegaBeeper5000", "BindFord.MegaBeeper5000\BinFord.MegaBeeper5000.csproj", "{2D2B3A4A-1F51-41B7-B8EF-3B06EB2BCA14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Data.BinFord", "ppedv.QualitySlegehammer.Data.BinFord\ppedv.QualitySlegehammer.Data.BinFord.csproj", "{8F184F0F-DB61-4964-880E-D805FE791D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Data.BinFord.Tests", "ppedv.QualitySlegehammer.Data.BinFord.Tests\ppedv.QualitySlegehammer.Data.BinFord.Tests.csproj", "{B2817E69-C505-4270-B881-495CB9C455CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +53,24 @@ Global
 		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D2B3A4A-1F51-41B7-B8EF-3B06EB2BCA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D2B3A4A-1F51-41B7-B8EF-3B06EB2BCA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D2B3A4A-1F51-41B7-B8EF-3B06EB2BCA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D2B3A4A-1F51-41B7-B8EF-3B06EB2BCA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F184F0F-DB61-4964-880E-D805FE791D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F184F0F-DB61-4964-880E-D805FE791D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F184F0F-DB61-4964-880E-D805FE791D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F184F0F-DB61-4964-880E-D805FE791D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2817E69-C505-4270-B881-495CB9C455CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2817E69-C505-4270-B881-495CB9C455CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2817E69-C505-4270-B881-495CB9C455CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2817E69-C505-4270-B881-495CB9C455CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D2B3A4A-1F51-41B7-B8EF-3B06EB2BCA14} = {E707D61C-6F18-43DF-B821-564A9A0A332C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AB4304A-4C8C-46C3-B7A2-7FBF1C9322A7}

@@ -39,11 +39,14 @@ namespace ppedv.QualitySlegehammer.Data.EF
         }
 
         public EfContext() : this("Server=.\\SQLEXPRESS;Database=QualitySlegeHammer_dev;Trusted_Connection=true")
-        { }
+        {
+            this.Configuration.ProxyCreationEnabled = false;
+        }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
         }
     }

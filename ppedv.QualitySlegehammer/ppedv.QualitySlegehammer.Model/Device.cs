@@ -8,7 +8,7 @@ namespace ppedv.QualitySlegehammer.Model
         /// Das property speichert den Namen des Gerätes
         /// </summary>
         public string Name { get; set; }
-        public virtual HashSet<Job> Jobs { get; set; } = new HashSet<Job>();
+        public virtual ICollection<Job> Jobs { get; set; } = new List<Job>();
         public int Adress { get; set; }
     }
 }

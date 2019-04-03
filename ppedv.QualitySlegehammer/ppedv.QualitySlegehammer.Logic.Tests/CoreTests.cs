@@ -157,5 +157,34 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
             core.GetStatus(o).Should().Be(result);
         }
 
+
+        [TestMethod]
+        public void Core_BeepAlleDevices_Test()
+        {
+            var d1 = new Mock<IDevice>();
+            var d2 = new Mock<IDevice>();
+
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Device>().Query()).Returns(() =>
+            {
+                return new[] { new Device() { Adress = 8 }, new Device() { Adress = 220 } }.AsQueryable();
+            });
+
+          //// d1.Setup(x => x.Start(It.IsAny<int>())).Verifiable();
+           // d2.Setup(x => x.Start(It.IsAny<int>()));
+
+
+            var core = new Core(uowMock.Object, new[] { d1.Object, d2.Object });
+            core.BeepAlleDevices(200);
+
+            d1.Verify(x => x.Start(It.IsAny<int>()), Times.Exactly(2));
+            d1.Verify(x => x.Start(200), Times.AtLeast(1));
+
+            d2.Verify(x => x.Start(200), Times.Never);
+            d2.Verify(x => x.Start(201), Times.Never);
+
+
+        }
+
     }
 }

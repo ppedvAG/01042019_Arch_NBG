@@ -6,7 +6,7 @@ namespace ppedv.QualitySlegehammer.Model
     {
         public string ProdNr { get; set; }
         public OrderStatus Status { get; set; }
-        public virtual HashSet<Job> Jobs { get; set; } = new HashSet<Job>();
+        public virtual ICollection<Job> Jobs { get; set; } = new List<Job>();
     }
 
     public enum OrderStatus

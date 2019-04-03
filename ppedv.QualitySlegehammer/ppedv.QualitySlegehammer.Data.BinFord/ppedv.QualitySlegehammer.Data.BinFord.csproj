@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ppedv.QualitySlegehammer.Data.BinFord\ppedv.QualitySlegehammer.Data.BinFord.csproj" />
-    <ProjectReference Include="..\ppedv.QualitySlegehammer.Data.EF\ppedv.QualitySlegehammer.Data.EF.csproj" />
+    <ProjectReference Include="..\BindFord.MegaBeeper5000\BinFord.MegaBeeper5000.csproj" />
     <ProjectReference Include="..\ppedv.QualitySlegehammer.Model\ppedv.QualitySlegehammer.Model.csproj" />
   </ItemGroup>
 
