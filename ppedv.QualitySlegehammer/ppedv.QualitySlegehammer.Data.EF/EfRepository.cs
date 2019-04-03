@@ -84,8 +84,12 @@ namespace ppedv.QualitySlegehammer.Data.EF
         public void Update(T entity)
         {
             var loaded = GetById(entity.Id);
+            var dt = loaded.Added;
             if (loaded != null)
+            {
                 con.Entry(loaded).CurrentValues.SetValues(entity);
+                loaded.Added = dt;
+            }
         }
     }
 }

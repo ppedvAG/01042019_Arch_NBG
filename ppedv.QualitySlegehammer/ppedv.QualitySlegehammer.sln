@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Model", "ppedv.QualitySlegehammer.Model\ppedv.QualitySlegehammer.Model.csproj", "{4507319B-B2B1-4BC6-9B6D-FDDF8AA6874F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.QualitySlegehammer.Model", "ppedv.QualitySlegehammer.Model\ppedv.QualitySlegehammer.Model.csproj", "{4507319B-B2B1-4BC6-9B6D-FDDF8AA6874F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Data.EF", "ppedv.QualitySlegehammer.Data.EF\ppedv.QualitySlegehammer.Data.EF.csproj", "{AC551ECD-AABB-4CDE-A0F0-15D56E5A80B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Data.EF.Tests", "ppedv.QualitySlegehammer.Data.EF.Tests\ppedv.QualitySlegehammer.Data.EF.Tests.csproj", "{CF6DE418-F607-4726-AFB1-7007103EC757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Logic", "ppedv.QualitySlegehammer.Logic\ppedv.QualitySlegehammer.Logic.csproj", "{DC0076DB-D206-4FBE-9175-D32D8D1D9FF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.QualitySlegehammer.Logic", "ppedv.QualitySlegehammer.Logic\ppedv.QualitySlegehammer.Logic.csproj", "{DC0076DB-D206-4FBE-9175-D32D8D1D9FF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.Logic.Tests", "ppedv.QualitySlegehammer.Logic.Tests\ppedv.QualitySlegehammer.Logic.Tests.csproj", "{87823154-0835-4A23-8D3C-6DF2FB0F249E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.QualitySlegehammer.UI.Web", "ppedv.QualitySlegehammer.UI.Web\ppedv.QualitySlegehammer.UI.Web.csproj", "{98246BA7-C54C-4BB9-A85C-754955EBE35C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87823154-0835-4A23-8D3C-6DF2FB0F249E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98246BA7-C54C-4BB9-A85C-754955EBE35C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

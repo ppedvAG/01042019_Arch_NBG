@@ -21,6 +21,23 @@ namespace ppedv.QualitySlegehammer.Data.EF
         public EfContext(string conString) : base(conString)
         { }
 
+        public override int SaveChanges()
+        {
+            DateTime dt = DateTime.Now;
+            foreach (var item in ChangeTracker.Entries<Entity>().Where(X => X.State == EntityState.Added))
+            {
+                item.Entity.Added = dt;
+                item.Entity.Modified = dt;
+            }
+
+            foreach (var item in ChangeTracker.Entries<Entity>().Where(X => X.State == EntityState.Modified))
+            {
+                item.Entity.Modified = dt;
+            }
+
+            return base.SaveChanges();
+        }
+
         public EfContext() : this("Server=.\\SQLEXPRESS;Database=QualitySlegeHammer_dev;Trusted_Connection=true")
         { }
 
