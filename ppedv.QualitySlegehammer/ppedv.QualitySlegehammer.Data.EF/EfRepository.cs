@@ -8,38 +8,82 @@ using System.Threading.Tasks;
 
 namespace ppedv.QualitySlegehammer.Data.EF
 {
-    public class EfRepository : IRepository
+
+    public class EfUnitOfWork : IUnitOfWork
     {
         private EfContext con = new EfContext();
 
-        public void Add<T>(T entity) where T : Entity
+        private EfOrderRepository orderRepo = null;
+        public IOrderRepository OrderRepository
         {
-            con.Set<T>().Add(entity);
+            get
+            {
+                if (orderRepo == null)
+                    orderRepo = new EfOrderRepository(con);
+                return orderRepo;
+            }
         }
 
-        public void Delete<T>(T entity) where T : Entity
+        public void Dispose()
         {
-            con.Set<T>().Remove(entity);
+            con.Dispose();
         }
 
-        public T GetById<T>(int id) where T : Entity
+        public IRepository<T> GetRepo<T>() where T : Entity
         {
-            return con.Set<T>().Find(id);
-        }
-
-        public IQueryable<T> Query<T>() where T : Entity
-        {
-            return con.Set<T>();
+            return new EfRepository<T>(con);
         }
 
         public void SaveAll()
         {
             con.SaveChanges();
         }
+    }
 
-        public void Update<T>(T entity) where T : Entity
+    public class EfOrderRepository : EfRepository<Order>, IOrderRepository
+    {
+        public EfOrderRepository(EfContext con) : base(con)
+        { }
+
+        public IReadOnlyCollection<Order> GetOrdersAllNew()
         {
-            var loaded = GetById<T>(entity.Id);
+            return con.Orders.Where(x => x.Status == OrderStatus.New).ToList();
+        }
+
+    }
+
+    public class EfRepository<T> : IRepository<T> where T : Entity
+    {
+        protected EfContext con;
+
+        public EfRepository(EfContext con)
+        {
+            this.con = con;
+        }
+
+        public void Add(T entity)
+        {
+            con.Set<T>().Add(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            con.Set<T>().Remove(entity);
+        }
+
+        public T GetById(int id)
+        {
+            return con.Set<T>().Find(id);
+        }
+
+        public IQueryable<T> Query()
+        {
+            return con.Set<T>();
+        }
+
+        public void Update(T entity)
+        {
+            var loaded = GetById(entity.Id);
             if (loaded != null)
                 con.Entry(loaded).CurrentValues.SetValues(entity);
         }

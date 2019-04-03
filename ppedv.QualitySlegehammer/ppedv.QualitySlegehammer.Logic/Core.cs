@@ -7,7 +7,7 @@ namespace ppedv.QualitySlegehammer.Logic
 {
     public class Core
     {
-        public IRepository Repository { get; }
+        public IUnitOfWork UnitOfWork { get; }
 
         public OrderStatus GetStatus(Order order)
         {
@@ -17,7 +17,7 @@ namespace ppedv.QualitySlegehammer.Logic
             if (order.Jobs.Count == 0)
                 throw new InvalidOperationException();
 
-            var jobs = Repository.Query<Job>().Where(x => x.Order.Id == order.Id).ToList();
+            var jobs =  UnitOfWork.GetRepo<Job>().Query().Where(x => x.Order.Id == order.Id).ToList();
 
             if (jobs.All(x => x.Status == JobStatus.New))
                 return OrderStatus.New;
@@ -27,12 +27,12 @@ namespace ppedv.QualitySlegehammer.Logic
                 return OrderStatus.Running;
         }
 
-        public Core(IRepository repo) //todo: dependency injection in here
+        public Core(IUnitOfWork uow) //todo: dependency injection in here
         {
-            Repository = repo;
+            UnitOfWork = uow;
         }
 
-        public Core() : this(new Data.EF.EfRepository())
+        public Core() : this(new Data.EF.EfUnitOfWork())
         { }
     }
 }

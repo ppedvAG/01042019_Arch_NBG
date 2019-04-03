@@ -22,8 +22,10 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
         [TestMethod]
         public void Core_GetStatus_order_without_jobs_thows_()
         {
-            var repoMock = new Mock<IRepository>();
-            var core = new Core(repoMock.Object);
+            var repoMock = new Mock<IRepository<Job>>();
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Job>()).Returns(() => repoMock.Object);
+            var core = new Core(uowMock.Object);
             var order = new Order();
 
             Assert.ThrowsException<InvalidOperationException>(() => core.GetStatus(order));
@@ -37,13 +39,16 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
             j1.Order = order;
             order.Jobs.Add(j1);
 
-            var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.Query<Job>()).Returns(() =>
+
+            var repoMock = new Mock<IRepository<Job>>();
+            repoMock.Setup(x => x.Query()).Returns(() =>
               {
                   return new[] { j1 }.AsQueryable();
               });
 
-            var core = new Core(repoMock.Object);
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Job>()).Returns(() => repoMock.Object);
+            var core = new Core(uowMock.Object);
 
             core.GetStatus(order).Should().Be(OrderStatus.New);
         }
@@ -56,13 +61,14 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
             j1.Order = order;
             order.Jobs.Add(j1);
 
-            var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.Query<Job>()).Returns(() =>
+            var repoMock = new Mock<IRepository<Job>>();
+            repoMock.Setup(x => x.Query()).Returns(() =>
             {
                 return new[] { j1 }.AsQueryable();
             });
-
-            var core = new Core(repoMock.Object);
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Job>()).Returns(() => repoMock.Object);
+            var core = new Core(uowMock.Object);
 
             core.GetStatus(order).Should().Be(OrderStatus.Running);
         }
@@ -75,13 +81,15 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
             j1.Order = order;
             order.Jobs.Add(j1);
 
-            var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.Query<Job>()).Returns(() =>
+            var repoMock = new Mock<IRepository<Job>>();
+            repoMock.Setup(x => x.Query()).Returns(() =>
             {
                 return new[] { j1 }.AsQueryable();
             });
 
-            var core = new Core(repoMock.Object);
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Job>()).Returns(() => repoMock.Object);
+            var core = new Core(uowMock.Object);
 
             core.GetStatus(order).Should().Be(OrderStatus.Finished);
         }
@@ -94,13 +102,15 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
             j1.Order = order;
             order.Jobs.Add(j1);
 
-            var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.Query<Job>()).Returns(() =>
+            var repoMock = new Mock<IRepository<Job>>();
+            repoMock.Setup(x => x.Query()).Returns(() =>
             {
                 return new[] { j1 }.AsQueryable();
             });
 
-            var core = new Core(repoMock.Object);
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Job>()).Returns(() => repoMock.Object);
+            var core = new Core(uowMock.Object);
 
             core.GetStatus(order).Should().Be(OrderStatus.Finished);
         }
@@ -132,11 +142,20 @@ namespace ppedv.QualitySlegehammer.Logic.Tests
             o.Jobs.Add(j1);
             o.Jobs.Add(j2);
 
-            var repoMock = new Mock<IRepository>();
-            repoMock.Setup(x => x.Query<Job>()).Returns(() => new[] { j1, j2 }.AsQueryable());
-            var core = new Core(repoMock.Object);
+            var repoMock = new Mock<IRepository<Job>>();
+            repoMock.Setup(x => x.Query()).Returns(() => new[] { j1, j2 }.AsQueryable());
+
+            var orderRepoMock = new Mock<IOrderRepository>();
+            orderRepoMock.Setup(x => x.GetOrdersAllNew()).Returns(() => new[] { new Order(), new Order() });
+
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepo<Job>()).Returns(() => repoMock.Object);
+            uowMock.Setup(x => x.OrderRepository).Returns(() => orderRepoMock.Object);
+
+            var core = new Core(uowMock.Object);
 
             core.GetStatus(o).Should().Be(result);
         }
+
     }
 }
