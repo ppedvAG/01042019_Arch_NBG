@@ -11,7 +11,7 @@ namespace ppedv.QualitySlegehammer.UI.Web.Controllers
 {
     public class OrderApiController : ApiController
     {
-        Core core = new Core();
+        Core core = new Core(null, null);
         // GET: api/OrderApi
         public IEnumerable<Order> Get()
         {

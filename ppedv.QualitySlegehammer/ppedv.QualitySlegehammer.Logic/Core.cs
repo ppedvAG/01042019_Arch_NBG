@@ -50,7 +50,6 @@ namespace ppedv.QualitySlegehammer.Logic
             Devices.Values.ToList().ForEach(x => x.Start(freq));
         }
 
-        public Core() : this(new Data.EF.EfUnitOfWork())
-        { }
+  
     }
 }

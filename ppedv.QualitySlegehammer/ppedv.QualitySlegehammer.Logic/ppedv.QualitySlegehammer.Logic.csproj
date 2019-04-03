@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ppedv.QualitySlegehammer.Data.BinFord\ppedv.QualitySlegehammer.Data.BinFord.csproj" />
-    <ProjectReference Include="..\ppedv.QualitySlegehammer.Data.EF\ppedv.QualitySlegehammer.Data.EF.csproj" />
     <ProjectReference Include="..\ppedv.QualitySlegehammer.Model\ppedv.QualitySlegehammer.Model.csproj" />
   </ItemGroup>
 

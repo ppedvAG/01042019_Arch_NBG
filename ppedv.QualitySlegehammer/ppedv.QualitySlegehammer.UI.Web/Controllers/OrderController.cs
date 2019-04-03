@@ -1,8 +1,11 @@
-﻿using ppedv.QualitySlegehammer.Logic;
+﻿using Autofac;
+using ppedv.QualitySlegehammer.Logic;
 using ppedv.QualitySlegehammer.Model;
+using ppedv.QualitySlegehammer.Model.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,7 +13,33 @@ namespace ppedv.QualitySlegehammer.UI.Web.Controllers
 {
     public class OrderController : Controller
     {
-        Core core = new Core();
+        Core core;
+
+
+
+        public OrderController()
+        {
+            var builder = new ContainerBuilder();
+
+            var dataAsm = Assembly.LoadFrom(@"C:\Users\ar2\source\repos\ppedvAG\01042019_Arch_NBG\ppedv.QualitySlegehammer\ppedv.QualitySlegehammer.Data.EF\bin\Debug\ppedv.QualitySlegehammer.Data.EF.dll");
+            builder.RegisterAssemblyTypes(dataAsm).As<IUnitOfWork>().InstancePerLifetimeScope();
+
+            var deviceAsm = Assembly.LoadFrom(@"C:\Users\ar2\source\repos\ppedvAG\01042019_Arch_NBG\ppedv.QualitySlegehammer\ppedv.QualitySlegehammer.Data.BinFord\bin\Debug\netstandard2.0\BinFord.MegaBeeper5000.dll");
+            builder.RegisterAssemblyTypes(deviceAsm).As<IDevice>().InstancePerLifetimeScope();
+
+            //builder.RegisterType<Core>().UsingConstructor(typeof(IUnitOfWork), );
+
+            var container = builder.Build();
+
+            core = new Core(container.Resolve<IUnitOfWork>());
+
+
+        }
+
+        //public OrderController()
+        //{
+        //    core = new Core();
+        //}
 
         // GET: Order
         public ActionResult Index()
